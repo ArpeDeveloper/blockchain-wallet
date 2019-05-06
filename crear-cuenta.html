@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Cartera - Crear cuenta</title>
+	<link rel="stylesheet" type="text/css" href="/bootstrap-4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/fontawesome-5.8.1/css/all.min.css">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">Cartera</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarText">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="./">Transferir</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./crear-cuenta">Crear cuenta</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./migraciones">Migrar</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="./">Cartera</a></li>
+			<li class="breadcrumb-item">Cuenta</li>
+			<li class="breadcrumb-item active" aria-current="page">Crear</li>
+		</ol>
+	</nav>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<small class="form-text text-muted">
+					Escriba su llave privada para continuar.
+				</small>
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" placeholder="Llave privada" aria-label="Llave privada" aria-describedby="btn-send-llave-privada">
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="button" id="btn-send-llave-privada"><i class="fa fa-search"></i></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active" id="transferir-tab" data-toggle="tab" href="#transferir" role="tab" aria-controls="transferir" aria-selected="true">Transferir</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="transacciones-tab" data-toggle="tab" href="#transacciones" role="tab" aria-controls="transacciones" aria-selected="false">Transacciones</a>
+					</li>
+				</ul>
+				<br>
+				<div class="tab-content">
+					<div class="tab-pane fade show active" id="transferir" role="tabpanel" aria-labelledby="transferir-tab">
+						<div class="row justify-content-md-center">
+							<div class="col col-md-8">
+								<div class="form-group">
+									<label for="txt-llave-destino">Destino</label>
+									<input type="text" name="txt-llave-destino" id="txt-llave-destino" class="form-control" placeholder="0x..." aria-label="LLave destino">
+								</div>
+								<div class="form-group">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">$</span>
+										</div>
+										<input type="text" class="form-control" aria-label="Monto" placeholder="0.00">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="transacciones" role="tabpanel" aria-labelledby="transacciones-tab">...</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="/bootstrap-4.3.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/fontawesome-5.8.1/js/all.min.js"></script>
+	<script type="text/javascript" src="/js/crear-cuenta.js"></script>
+</body>
+</html>

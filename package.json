@@ -1,0 +1,24 @@
+{
+  "name": "cartera",
+  "version": "1.0.0",
+  "description": "a walet with blockchain technologies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "web3": "github:ethereum/web3.js"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArpeDevelopper/blockchain-wallet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ArpeDevelopper/blockchain-wallet/issues"
+  },
+  "homepage": "https://github.com/ArpeDevelopper/blockchain-wallet#readme"
+}
