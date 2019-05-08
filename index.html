@@ -4,8 +4,7 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Cartera</title>
-	<link rel="stylesheet" type="text/css" href="/bootstrap-4.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/fontawesome-5.8.1/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -14,29 +13,29 @@
 	<br/>
 	<div class="container-fluid">
 		<div id="contenedor-inicial" class="row justify-content-md-center">
-			<div class="col col-3">
+			<!--<div class="col col-3">
 				<button id="btn-crear-cartera" type="button" class="btn btn-success">Crear cartera</button>
 			</div>
 			<div class="col col-3 hide">
 				<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-restaurar-cartera">Restaurar cartera</button>
-			</div>
+			</div> -->
 		</div>
-		<div id="contenedor-cuentas" class="row justify-content-md-center hide">
-			<div class="col">
-				<ul class="list-unstyled">
-					<li class="media">
-						<img src="..." class="mr-3" alt="...">
-						<div class="media-body">
-							<h5 class="mt-0 mb-1">List-based media object</h5>
-							Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-						</div>
-					</li>
-				</ul>
+		<div id="contenedor-cuentas" class="justify-content-md-center hide">
+			<div class="row" id="lista-cuentas">
+				
+			</div>
+			<div class="row justify-content-md-center">
+				<div class="col col-3">
+					<button id="btn-crear-cuenta" type="button" class="btn btn-success">Crear cuenta</button>
+				</div>
+				<div class="col col-3 hide">
+					<button type="button" class="btn btn-info" id="btn-agregar-cuenta">Agregar cuenta</button>
+				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Modal -->
-	<div class="modal fade" id="modal-restaurar-cartera" tabindex="-1" role="dialog" aria-labelledby="nodal-restaurar-cartera-label" aria-hidden="true">
+	<!-- <div class="modal fade" id="modal-restaurar-cartera" tabindex="-1" role="dialog" aria-labelledby="nodal-restaurar-cartera-label" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -54,21 +53,109 @@
 				</div>
 			</div>
 		</div>
+	</div> -->
+	<div class="modal fade" id="modal-transferencias" tabindex="-1" role="dialog" aria-labelledby="modal-transferencias-label" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modal-transferencias-label">Transferir</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<input class="form-control" type="text" readonly="" disabled="" name="origen" id="txt-origen">
+							</div>
+							<!-- <div class="form-group">
+								<input class="form-control" placeholder="LLave privada" type="text" name="llave" id="txt-llave">
+							</div> --> 
+							<div class="form-group">
+								<input class="form-control" placeholder="Destino" type="text" name="destino" id="txt-destino">
+							</div>
+							<div class="form-group">
+								<input class="form-control" placeholder="Cantidad (eth)" type="text" name="cantidad" id="txt-cantidad">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+					<button id="btn-transferir" type="button" class="btn btn-primary">Transferir</button>
+				</div>
+			</div>
+		</div>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="/bootstrap-4.3.1/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/fontawesome-5.8.1/js/all.min.js"></script>
-	<script type="text/javascript" src="/web3.min.js"></script>
-	<script type="text/javascript" src="/js/global.js"></script>
+	<script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/node_modules/web3/dist/web3.min.js"></script>
+	<script type="text/javascript" src="/global.js"></script>
 	<script type="text/javascript">
 		var cartera = new Cartera();
 		$(function(){
-			$("#contenedor-cuentas").hide();
-			$("#btn-crear-cartera").on("click",function(e){
+			$("#contenedor-inicial").hide();
+			$("#contenedor-cuentas").show();
+			/*$("#btn-crear-cartera").on("click",function(e){
 				cartera.crearCartera();
 				$("#contenedor-inicial").hide();
 				$("#contenedor-cuentas").show();
+			});*/
+			function didbujarBalances(){
+				$(".link-modal-transferencias").off("click");
+				$("#lista-cuentas").html("");
+				web3.eth.getAccounts(function(error,accounts){
+					accounts.forEach(function(account,i){
+						var balance = web3.eth.getBalance(account);
+						var wei = balance.toString(10);
+						var eth = web3.fromWei(wei, 'ether');
+						var divCol = $("<div>",{
+							class: "col col-md-6",
+							style: "padding: 0 5px 5px 0;"
+						});
+						var divCard = $("<div>",{
+							class: "card"
+						});
+						var divBody = $("<div>",{
+							class: "card-body"
+						}).append('<h5 class="card-title">' + account + '</h5>')
+						.append('<p class="card-text">$' + eth + ' eth</p>')
+						.append('<p class="card-text">$' + wei + ' wei</p>');
+						var enlaceTransaccion = $("<a>",{
+							class: "card-link link-modal-transferencias btn btn-primary",
+							href: "#",
+							text: "Transferir",
+							"data-address": account
+						});
+						divBody.append(enlaceTransaccion);
+						divCard.append(divBody);
+						divCol.append(divCard);
+						$("#lista-cuentas").append(divCol);
+						console.log(balance.toString(10));
+					});
+					$(".link-modal-transferencias").on("click", function(e){
+						var link = $(e.currentTarget);
+						var address = link.data("address");
+						$("#modal-transferencias").find("#txt-origen").val(address);
+						$("#modal-transferencias").modal("show");
+					});
+				});
+			}
+			didbujarBalances();
+			$("#btn-crear-cuenta").on("click",function(e){
+				web3.personal.newAccount("",function(error,account){
+					console.log(account);
+					didbujarBalances();
+				});
+			});
+
+			$("#btn-transferir").on("click",function(e){
+				cartera.transferir($("#txt-origen").val(), $("#txt-destino").val(), $("#txt-cantidad").val(), function(){
+						didbujarBalances();
+						$("#modal-transferencias").modal("hide");
+					});
 			});
 		});
 	</script>

@@ -51,19 +51,16 @@ module.exports = {
 				renderHTML('./index.html', response);
 				break;
 			case '/crear-cuenta':
-				renderHTML('./crear-cuenta.html', response);
+				crearCuenta(response);
 				break;
 			case '/migraciones':
 				renderHTML('./migraciones.html', response);
 				break;
 			default:
 				if(path.indexOf(".css") >= 0){
-					renderCSS('./public' + path, response);
+					renderCSS( "." + path, response);
 				}else if( path.indexOf(".js") >= 0){
-					if(path.indexOf("web3") >= 0)
-						renderJS('./node_modules/web3-dev/dist' + path, response);
-					else
-						renderJS('./public' + path, response);
+						renderJS( "." + path, response);
 				}else{
 					response.writeHead(404);
 					response.write('La ruta no existe');
@@ -72,3 +69,4 @@ module.exports = {
 		}
 	}
 }
+

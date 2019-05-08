@@ -32,10 +32,9 @@ Cartera.prototype = {
 		web3.eth.sendTransaction({
 		    from: from,
 		    to: to,
-		    value: value
-		})
-		.then(function(receipt){
-		    that.callback(callback, null, receipt);
+		    value: web3.toWei(value, "ether")
+		},function(receipt, t){
+		    that.callback(callback, null, t);
 		});
 	},
 	callback: function(callback, error, data){

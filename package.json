@@ -1,16 +1,17 @@
 {
-  "name": "cartera",
+  "name": "blockchain-wallet",
   "version": "1.0.0",
-  "description": "a walet with blockchain technologies",
-  "main": "index.js",
+  "description": "Una muy sencilla implementación de web3.js en modo local, para la creación de cuentas y transferencias entre ellas.",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "arpeDevelopper",
   "license": "ISC",
   "dependencies": {
-    "web3": "github:ethereum/web3.js"
+    "@fortawesome/fontawesome-free": "^5.8.1",
+    "bootstrap": "^4.3.1",
+    "web3": "^0.20.6"
   },
   "devDependencies": {},
   "repository": {
